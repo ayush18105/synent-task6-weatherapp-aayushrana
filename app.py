@@ -7,7 +7,7 @@ def get_weather(city):
         response = requests.get(url, timeout=10)
 
         if response.status_code != 200:
-            print("❌ Unable to fetch weather data.")
+            print("Unable to fetch weather data.")
             return
 
         data = response.json()
@@ -20,13 +20,13 @@ def get_weather(city):
         description = current["weatherDesc"][0]["value"]
 
         print("\n" + "=" * 40)
-        print("🌤 WEATHER REPORT")
+        print(" WEATHER REPORT")
         print("=" * 40)
-        print(f"📍 City        : {city.title()}")
-        print(f"🌡 Temperature : {temperature} °C")
-        print(f"💧 Humidity    : {humidity}%")
-        print(f"🌬 Wind Speed  : {wind_speed} km/h")
-        print(f"☁ Condition   : {description}")
+        print(f" City        : {city.title()}")
+        print(f" Temperature : {temperature} °C")
+        print(f" Humidity    : {humidity}%")
+        print(f" Wind Speed  : {wind_speed} km/h")
+        print(f" Condition   : {description}")
         print("=" * 40)
 
         # Save report
@@ -36,24 +36,24 @@ def get_weather(city):
             )
 
     except requests.exceptions.ConnectionError:
-        print("❌ Internet connection error.")
+        print(" Internet connection error.")
 
     except requests.exceptions.Timeout:
-        print("❌ Request timed out.")
+        print(" Request timed out.")
 
     except Exception as e:
-        print("❌ Error:", e)
+        print(" Error:", e)
 
 
 print("=" * 40)
-print("🌦 Welcome to WeatherWise")
+print(" Welcome to WeatherWise")
 print("=" * 40)
 
 while True:
     city = input("\nEnter City Name: ")
 
     if city.strip() == "":
-        print("❌ Please enter a city name.")
+        print(" Please enter a city name.")
         continue
 
     get_weather(city)
@@ -61,5 +61,5 @@ while True:
     choice = input("\nCheck another city? (y/n): ")
 
     if choice.lower() != "y":
-        print("\n👋 Thank you for using WeatherWise!")
+        print("\n Thank you for using WeatherWise!")
         break
